@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { FiArrowRight } from 'react-icons/fi'
 
 import logoImg from '../assets/logo.svg'
-import 'landing.css'
+import medicineImg from '../assets/medicine.svg'
+import '../styles/pages/landing.css'
 
 export default function LandingPage() {
   return (
@@ -15,9 +16,11 @@ export default function LandingPage() {
           <h1>Não esqueça de tomar seus remédios!</h1>
           <p>Tenha os horários na pal,a as suas mãos.</p>
         </main>
-        <Link to='' className="enter-app">
-          <FiArrowRight size={26} color='#fff' />
+        <Link to='/pacient/create' className="enter-app">
+          <FiArrowRight size={30} color='#fff' />
         </Link>
+
+        <img src={medicineImg} alt="Remédios" className="medicine-img"/>
 
       </div>
     </div>

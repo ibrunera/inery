@@ -1,0 +1,176 @@
+#create-pacient-container {
+  width: 100vw;
+  height: 100vh;
+
+  position: relative;
+  display: flex;
+}
+
+#create-pacient-container aside {
+  width: 560px;
+  background: linear-gradient(130.02deg, #FF9900 47.43%, #FFCC00 81.83%);
+  padding: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+#create-pacient-container aside h2 {
+  font-size: 30px;
+  font-weight: 600;
+
+  line-height: 38px;
+  margin-top: 56px;
+}
+
+#create-pacient-container aside p {
+  line-height: 28px;
+  margin-top: 30px;
+}
+
+#create-pacient-container aside footer {
+  display: flex;
+  flex-direction: column;
+  
+  line-height: 20px;
+}
+
+#create-pacient-container aside footer strong {
+  font-weight: 800;
+}
+
+#create-pacient-container aside footer img {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 340px;
+  top: 524px;
+}
+
+#create-pacient-container main {
+  width: 90vw;
+  height: 100vh;
+  padding: 10px;
+
+  background-color: #2280FF;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#create-pacient-container main h2{
+  font-size: 40px;
+  font-weight: 800;
+
+  line-height: 38px;
+}
+
+#create-pacient-container .pacient-form {
+  width: 700px;
+  margin: 34px auto;
+
+  background: #ffffff;
+  border: 1px solid #d3e2e5;
+  border-radius: 20px;
+  color: #000000;
+
+  padding: 64px;
+
+  overflow: hidden;
+}
+
+#create-pacient-container .pacient-form fieldset {
+  border: 0;
+}
+
+#create-pacient-container .pacient-form fieldset legend {
+  width: 100%;
+
+  font-size: 32px;
+  line-height: 34px;
+  color: #DD3355;
+  font-weight: 700;
+
+  border-bottom: 1px solid #DD3355;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+}
+
+#create-pacient-container .pacient-form .input-block + .input-block {
+  margin-top: 10px;
+}
+
+
+#create-pacient-container .pacient-form .input-block label {
+  display: flex;
+  color: #8fa7b3;
+  margin-bottom: 10px;
+  line-height: 24px;
+}
+
+#create-pacient-container .pacient-form .input-group {
+  display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+#create-pacient-container .pacient-form .input-group .input-photo .input-block + .input-block{
+  margin-bottom: 3px;
+}
+
+form.create-orphanage-form .input-block .image-container img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+#create-pacient-container .pacient-form .input-group .input-photo .input-block .new-image {
+  width: 50px;
+  height: 50px;
+  background: #f5f8fa;
+  border: 1px dashed #96d2f0;
+  border-radius: 50px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#create-pacient-container .pacient-form .input-group .input-photo .input-block input[type='file'] {
+  visibility: hidden;
+}
+
+
+#create-pacient-container .pacient-form button.confirm-button {
+  margin-top: 34px;
+
+  width: 100%;
+  height: 64px;
+  border: 0;
+  cursor: pointer;
+  background: #DD3355;
+  border-radius: 20px;
+  color: #ffffff;
+  font-weight: 800;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: background-color 0.2s;
+}
+
+#create-pacient-container .pacient-form button.confirm-button svg {
+  margin-right: 16px;
+}
+
+#create-pacient-container .pacient-form button.confirm-button:hover {
+  background: #FFCC00;
+}
