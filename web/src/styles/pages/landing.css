@@ -1,0 +1,11 @@
+#landing-container {
+  background: linear-gradient(130.02deg, #FF9900 47.43%, #FFCC00 81.83%);
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
