@@ -1,0 +1,105 @@
+#login-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(130.02deg, #FF9900 47.43%, #FFCC00 81.83%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-container  aside {
+  width: 560px;
+  padding: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#login-container  aside .phone{
+  position : relative;
+  width: 400px;
+  height: 400px;
+  right: 50px
+}
+
+#login-container main h2{
+  font-size: 40px;
+  font-weight: 800;
+
+  line-height: 38px;
+}
+
+#login-container main .login-form {
+  width:  550px;
+  height: 400px;
+
+  margin-top: 64px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+
+#login-container main .login-form fieldset {
+  border: 0;
+}
+
+#login-container main .login-form fieldset legend {
+  width: 100%;
+
+  font-size: 24px;
+  line-height: 24px;
+  color: #DD3355;
+  font-weight: 700;
+
+  border-bottom: 1px solid #DD3355;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+}
+
+#login-container main .login-form .input-block label {
+  display: flex;
+  color: #8fa7b3;
+  margin-bottom: 10px;
+  line-height: 24px;
+}
+
+
+#login-container main .login-form .input-block + .input-block {
+  margin-top: 10px;
+}
+
+#login-container main .login-form  button.confirm-button {
+  margin-top: 34px;
+
+  width: 94%;
+  height: 54px;
+  border: 0;
+  cursor: pointer;
+  background: #DD3355;
+  border-radius: 20px;
+  color: #ffffff;
+  font-weight: 800;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: background-color 0.2s;
+}
+
+#login-container main .login-form  button.confirm-button svg {
+  margin-right: 16px;
+}
+
+#login-container main .login-form  button.confirm-button:hover {
+  background: #FFCC00;
+}
+
+
