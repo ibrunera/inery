@@ -13,13 +13,31 @@ export default {
       name, 
       email,
       password,
-      cpf
+      cpf, 
+      photo : 'Tem uma foto aq'
     }
 
     const pacient = pacientRepository.create(data)
 
     await pacientRepository.save(pacient)
 
-    res.status(201).json(pacient)
+    return res.status(201).json(pacient)
+  },
+
+  async index(req: Request, res: Response){
+    const pacientRepository = getRepository(Pacient)
+
+    const pacinet = await pacientRepository.find()
+
+    return res.json(pacinet)
+  },
+
+  async show(req: Request, res: Response){
+    const pacientRepository = getRepository(Pacient)
+
+    const pacient = await pacientRepository.findOneOrFail()
+
+    return res.json(pacient)
   }
+  
 }
