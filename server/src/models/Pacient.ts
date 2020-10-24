@@ -1,4 +1,5 @@
-import {Entity, Column, PrimaryGeneratedColumn} from 'typeorm'
+import {Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn} from 'typeorm'
+import Recipe from './Recipe';
 
 @Entity('pacient')
 export default class Pacient {
@@ -19,5 +20,11 @@ export default class Pacient {
 
   @Column()
   photo: string;
+
+  @OneToMany(() => Recipe, (recipe) => recipe.pacient_id, {
+    cascade: ['insert', 'update']
+  })
+  @JoinColumn({name : 'pacient_id'})
+  recipes: Recipe[];
 
 }
