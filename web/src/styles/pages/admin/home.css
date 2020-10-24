@@ -44,68 +44,75 @@
 }
 
 #home-container .container {
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 30px;
+  margin: 32px auto;
 }
 
-#home-container .container .list-page {
-  width: 470px;
-  height: 250px;
+.container .title-container {
   margin: 64px auto;
-  padding: 20px;
-
-  background: #ffffff;
-  border: 1px solid #d3e2e5;
-  border-radius: 20px;
-
-  color: #000000;
-
-  overflow: hidden;
 
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center
 }
 
-#home-container .container .create-page {
-  width: 470px;
-  height: 250px;
-  margin: 64px auto;
-  padding: 20px;
-
-  background: #ffffff;
-  border: 1px solid #d3e2e5;
-  border-radius: 20px;
-
-  color: #000000;
-
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.container .title-container img {
+  width: 50px;
+  height: 50px;
+  margin-top: 30px;
 }
 
-#home-container .container .list-page img {
-  width: 150px;
-  height: 150px;
+.container .title-container h1{
+  margin-top: 80px;
+  margin-bottom: 24px;
 }
 
-#home-container .container .list-page p {
-  line-height: 28px;
+.container ul{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 24px;
+  list-style: none;
 
-  margin-top: 20px;
 }
 
-#home-container .container .create-page img {
-  width: 150px;
-  height: 150px;
+.container ul li{
+  background: #FFF;
+  padding: 24px;
+  border-radius:8px;
+  position: relative;
+  color: #000;
 }
 
-#home-container .container .create-page p {
-  line-height: 28px;
+.container ul li img {
+  width: 40px;
+  height: 40px;
+}
 
-  margin-top: 20px;
+.container ul li button{
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  border:0;
+}
+
+.container ul li button:hover{
+  opacity: 0.8;
+}
+
+.container ul li strong{
+  display: block;
+  margin-bottom: 16px;
+  color: #41414d;
+}
+
+.container ul li p + strong{
+  margin-top: 32px;
+}
+
+.container ul li p{
+  columns: #737380;
+  line-height: 21px;
+  font-size: 16px;
 }
