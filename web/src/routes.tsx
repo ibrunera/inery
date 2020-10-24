@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch } from 'react-router-dom'
+import CreateMedicine from './pages/admin/CreateMedicine';
 import HomePage from './pages/admin/HomePage';
 import LoginPage from './pages/admin/LoginPage';
 import CreatePacient from './pages/CreatePacient';
@@ -14,6 +15,9 @@ export default function Routes() {
         <Route path="/pacient/create" component={CreatePacient} />
         <Route path="/admin/" exact component={LoginPage} />
         <Route path="/admin/home" component={HomePage} />
+        <Route path="/admin/medicine/create/" component={CreateMedicine} />
+
+        }
       </Switch>
     </BrowserRouter>
   )
