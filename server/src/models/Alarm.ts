@@ -15,7 +15,7 @@ export default class Alarm {
   @JoinColumn({name: 'recipe_id'})
   recipe: Recipe;
 
-  @OneToMany(() => WeekDay, (weekday) => weekday.alarms, {
+  @OneToMany(() => WeekDay, (weekday) => weekday.alarm, {
     cascade: ['insert', 'update']
   })
   @JoinColumn({name : 'alarm_id'})
