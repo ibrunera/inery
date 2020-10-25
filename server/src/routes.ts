@@ -1,4 +1,4 @@
-import {Router} from 'express'
+import { Router } from 'express'
 import MedicineController from './controllers/MedicineController'
 import PacientController from './controllers/PatientController'
 import RecipeController from './controllers/RecipeController'
@@ -13,5 +13,6 @@ routes.get('/medicine', MedicineController.index)
 routes.get('/medicine/:id', MedicineController.show)
 
 routes.post('/recipe', RecipeController.create)
+routes.get('/recipe', RecipeController.index)
 
 export default routes
