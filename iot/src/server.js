@@ -7,6 +7,10 @@ const io = require('socket.io')(server)
 const date = new Date()
 
 
+//Conectar com mobile Placa
+//Como enviar dados? 
+
+
 
 //Configuração do express e server
 app.use(express.static(__dirname + '/public'))
@@ -31,7 +35,7 @@ five.Board().on('ready', function () {
       console.log(handshake)
     })
 
-
+//Tentar usar um alarme sonoro
     function handleAlarm(week_day, hour, minute) {
 
       if (week_day === date.getDay() && hour === date.getHours() && minute === date.getMinutes()) {
