@@ -33,9 +33,11 @@ export default {
   },
 
   async show(req: Request, res: Response){
+    const id = req.params
+
     const pacientRepository = getRepository(Pacient)
 
-    const pacient = await pacientRepository.findOneOrFail()
+    const pacient = await pacientRepository.findOneOrFail(id)
 
     return res.json(pacient)
   }

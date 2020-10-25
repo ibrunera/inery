@@ -14,7 +14,7 @@ export default class Medicine {
   manufacturer: string;
 
   @Column()
-  compound: string;
+  compund: string;
 
   @Column()
   description: string;
