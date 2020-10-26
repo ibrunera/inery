@@ -7,15 +7,19 @@ export default {
   async create(req: Request, res: Response){
     const {name, manufacturer, description, compund} = req.body
 
+    const photo = req.file as Express.Multer.File
+
     const medicineRepository = getRepository(Medicine)
+    // console.log("Data: ", "nome", name, "Fab", manufacturer,"Desc", description, "comp", compund,"photo", photo.filename)
 
     const data = {
       name, 
       manufacturer, 
       description, 
       compund, 
-      photo : 'Tem uma photo aqui'
+      photo : photo.filename
     }
+
 
     const medicine = medicineRepository.create(data)
 
