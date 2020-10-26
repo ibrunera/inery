@@ -44,6 +44,10 @@ export default {
     const pacient = await pacientRepository.findOneOrFail(id)
     
     return res.json(pacientView.render(pacient))
+  },
+
+  async update(req: Request, res: Response){
+
   }
   
 }

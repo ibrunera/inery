@@ -2,6 +2,8 @@ import { Router } from 'express'
 import multer from 'multer'
 import uploadConfig from './config/uploads'
 
+import authMiddleware from './middlewares/AuthMiddleware'
+
 import AlarmController from './controllers/AlarmController'
 import AuthController from './controllers/AuthController'
 import MedicineController from './controllers/MedicineController'
@@ -12,7 +14,7 @@ const routes = Router()
 const uploads = multer(uploadConfig)
 
 routes.post('/pacient', uploads.single('photo'),PacientController.create)
-routes.get('/pacient', PacientController.index)
+routes.get('/pacient', authMiddleware,PacientController.index)
 routes.get('/pacient/:id', PacientController.show)
 
 routes.post('/medicine', uploads.single('photo'),MedicineController.create)
