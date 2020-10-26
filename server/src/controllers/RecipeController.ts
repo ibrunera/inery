@@ -4,7 +4,6 @@ import Alarm from '../models/Alarm'
 import Recipe from '../models/Recipe'
 import WeekDay from '../models/WeekDay'
 import convertHourToMinutes from '../utils/convertToMinute'
-import parseStringAsArray from '../utils/parseStringToArray'
 
 export default {
   async create(req: Request, res: Response) {
@@ -17,9 +16,9 @@ export default {
     const alarmRepository = getRepository(Alarm)
 
     const weeks = req.body.weeks as WeekDay[]
-    console.log("Fora do map", weeks)
+    // console.log("Fora do map", weeks)
     const week_days = weeks.map((week: WeekDay) => {
-      console.log("Dentro do map", week)
+      // console.log("Dentro do map", week)
       return { week_day: week.week_day }
     })
 
@@ -59,5 +58,44 @@ export default {
     })
 
     return res.json(recipes)
+  },
+
+  async show(req: Request, res: Response){
+    const recipeRepository = getRepository(Recipe)
+    const {id} = req.params
+
+    const recipe = await recipeRepository.findOne(id)
+
+    if(!recipe) return res.status(401)
+
+    return res.json(recipe)
+  },
+
+  async update(req: Request, res: Response){
+    const {id} = req.params
+
+    const recipeRepository = getRepository(Recipe)
+
+    const recipe = await recipeRepository.findOneOrFail(id)
+
+    if(!recipe) return res.status(401)
+
+    recipeRepository.merge(recipe, req.body)
+    const results = await recipeRepository.save(recipe)
+    return res.json(results)
+  },
+
+  async delete(req: Request, res: Response){
+    const {id} = req.params
+
+    const recipeRepository = getRepository(Recipe)
+
+    const recipe = await recipeRepository.findOneOrFail(id)
+
+    if(!recipe) return res.status(401)
+
+    await recipeRepository.delete(recipe)
+
+    return res.status(204)
   }
 }
