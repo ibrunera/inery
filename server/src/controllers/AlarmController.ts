@@ -36,9 +36,9 @@ export default {
 
     const alarmRepository = getRepository(Alarm)
 
-    console.log("Fora do map", weeks)
+    // console.log("Fora do map", weeks)
     const week_days = weeks.map((week: WeekDay) => {
-      console.log("Dentro do map", week)
+      // console.log("Dentro do map", week)
       return { week_day: week.week_day }
     })
 
@@ -53,7 +53,7 @@ export default {
     await alarmRepository.save(alarm)
 
     return res.json(alarm)
-  }
+  },
   //Acho q isso é no front
   // async sendIoT(req: Request, res: Response){
   //     const {week_days, hours} = req.params
@@ -62,4 +62,32 @@ export default {
 
 
   // }
+
+  async update(req: Request, res: Response){
+    const {id} = req.params
+
+    const alarmRepository = getRepository(Alarm)
+
+    const alarm = await alarmRepository.findOneOrFail(id)
+
+    if (!alarm) return res.status(401)
+
+    alarmRepository.merge(alarm, req.body)
+    const results = await alarmRepository.save(alarm)
+
+    return res.json(results)
+  },
+
+  async delete(req: Request, res: Response){
+    const {id} = req.params
+
+    const alarmRepository = getRepository(Alarm)
+
+    const alarm = await alarmRepository.findOneOrFail(id)
+
+    if(!alarm) return res.status(401)
+
+    await alarmRepository.delete(alarm)
+    return res.status(204)
+  }
 }
