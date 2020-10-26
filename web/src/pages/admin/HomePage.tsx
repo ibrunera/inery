@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Sidebar from '../../components/SideBar'
 import listImg from '../../assets/medical-records.svg'
 import pillsImg from '../../assets/pills.svg'
 
 import '../../styles/pages/admin/home.css'
+import { useHistory } from 'react-router-dom';
+import api from '../../service/api';
+
+interface Medicine {
+  id: number;
+  name: string;
+  manufacturer: string;
+  compund : string;
+  description: string;
+}
+
 
 export default function HomePage() {
+
+  // const history = useHistory()
+
+  const [medicines, setMedicines] = useState<Medicine[]>([])
+
+  useEffect(() => { 
+    api.get('medicine').then(({data}) => setMedicines(data) )
+  }, [])
+
   return (
     <div id="home-container">
       <Sidebar />
