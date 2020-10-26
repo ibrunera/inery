@@ -44,5 +44,35 @@ export default {
     const medicines = medicineRepository.find()
 
     return res.json(medicines)
+  },
+
+  async update(req: Request, res: Response){
+    const {id} = req.params
+    
+    const medicineRepository = getRepository(Medicine)
+  
+    const medicine = await medicineRepository.findOneOrFail(id)
+
+    if(!medicine) return res.status(401)
+
+    medicineRepository.merge(medicine, req.body)
+
+    const results = await medicineRepository.save(medicine)
+
+    return res.json(results)
+  },
+
+  async delete(req: Request, res: Response){
+    const {id} = req.params
+
+    const medicineRepository = getRepository(Medicine)
+
+    const medicine = await medicineRepository.findOneOrFail(id)
+
+    if(!medicine) return res.status(401)
+
+    await medicineRepository.delete(medicine)
+
+    return res.status(204)
   }
 }

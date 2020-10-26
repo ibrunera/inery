@@ -47,7 +47,32 @@ export default {
   },
 
   async update(req: Request, res: Response){
+    const {id} = req.params
 
+    const pacientRepository = getRepository(Pacient)
+
+    const pacient = await pacientRepository.findOneOrFail(id)
+
+
+    if(!pacient) return res.status(401)
+
+    pacientRepository.merge(pacient, req.body)
+    const results = await pacientRepository.save(pacient)
+    return res.json(results)
+  },
+
+  async delete(req: Request, res: Response){
+    const {id} = req.params
+
+    const pacientRepository = getRepository(Pacient)
+
+    const pacient = await pacientRepository.findOneOrFail(id)
+
+    if(!pacient) return res.status(401)
+
+    await pacientRepository.delete(pacient)
+
+    return res.status(204)
   }
   
 }

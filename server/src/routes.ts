@@ -17,6 +17,7 @@ const uploads = multer(uploadConfig)
 routes.post('/pacient', uploads.single('photo'),PacientController.create)
 routes.get('/pacient', authMiddleware,PacientController.index)
 routes.get('/pacient/:id', PacientController.show)
+routes.put('/pacient/:id', uploads.single('photo'), PacientController.update)
 
 routes.post('/medicine', uploads.single('photo'),MedicineController.create)
 routes.get('/medicine', MedicineController.index)
