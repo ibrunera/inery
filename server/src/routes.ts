@@ -9,6 +9,7 @@ import AuthController from './controllers/AuthController'
 import MedicineController from './controllers/MedicineController'
 import PacientController from './controllers/PatientController'
 import RecipeController from './controllers/RecipeController'
+import IoTController from './controllers/IoTController'
 
 const routes = Router()
 const uploads = multer(uploadConfig)
@@ -28,5 +29,7 @@ routes.post('/alarm/:recipe_id', AlarmController.create)
 routes.get('/alarm', AlarmController.index)
 
 routes.post('/auth', AuthController.authenticate)
+
+routes.post('/iot/', IoTController.alarm)
 
 export default routes
