@@ -20,7 +20,7 @@ export default class Recipe {
   @JoinColumn({name : 'medicine_id'})
   medicine_id: number;
 
-  @OneToMany(() => Alarm, (alarm) => alarm.recipe, {
+  @OneToMany(() => Alarm, (alarm) => alarm.recipe_id, {
     cascade: ['insert', 'update']
   })
   @JoinColumn({name: 'recipe_id'})

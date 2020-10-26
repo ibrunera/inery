@@ -13,7 +13,7 @@ export default class Alarm {
 
   @ManyToOne(() => Recipe, (recipe) => recipe.alarms)
   @JoinColumn({name: 'recipe_id'})
-  recipe: Recipe;
+  recipe_id: number;
 
   @OneToMany(() => WeekDay, (weekday) => weekday.alarm, {
     cascade: ['insert', 'update']
