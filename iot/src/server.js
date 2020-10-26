@@ -13,10 +13,7 @@ const date = new Date()
 
 
 //Configuração do express e server
-app.use(express.static(__dirname + '/public'))
-app.get('/', function (req, res, next) {
-  res.sendFile(__dirname + '/index.html')
-})
+
 
 //Conexão com a Placa arduino
 five.Board().on('ready', function () {

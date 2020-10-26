@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "iNery",
+    "slug": "iNery",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "linear-gradient(130.02deg, #FF9900 47.43%, #FFCC00 81.83%)"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -19,8 +19,8 @@
     "ios": {
       "supportsTablet": true
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "android" : {
+      "package" : "com.nextgenn.inery"
     }
   }
 }
