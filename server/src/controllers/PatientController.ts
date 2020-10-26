@@ -9,9 +9,10 @@ export default {
     const { name, email, password, cpf } = req.body
 
     const photo = req.file as Express.Multer.File
-    
+
     const pacientRepository = getRepository(Pacient)
 
+  
     const data = {
       name, 
       email,

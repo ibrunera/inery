@@ -1,5 +1,6 @@
-import {Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn} from 'typeorm'
-import Recipe from './Recipe';
+import {Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn, BeforeInsert, BeforeUpdate} from 'typeorm'
+import Recipe from './Recipe'
+import bcrypt from 'bcryptjs'
 
 @Entity('pacient')
 export default class Pacient {
@@ -26,5 +27,11 @@ export default class Pacient {
   })
   @JoinColumn({name : 'pacient_id'})
   recipes: Recipe[];
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  hashPassword(){
+    this.password = bcrypt.hashSync(this.password, 8)
+  }
 
 }
