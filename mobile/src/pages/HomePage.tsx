@@ -80,32 +80,32 @@ export default function HomePage() {
       <Text style={styles.title}>Bem vindo(a)! Thais </Text>
       <Text style={styles.description}>Aqui estão seus alarmes. Fique atento(a)!!</Text>
 
-    <View>
+      <View>
 
-      <View style={styles.recipesList} >
-      {recipes.map((recipe: Recipe) => (
+        <View style={styles.recipesList} >
+          {recipes.map((recipe: Recipe) => (
 
-          <View style={styles.recipes} key={recipe.id}>
-            <Text style={styles.recipesValue}>{recipe.id}</Text>
-            <Text style={styles.recipesProperty}>Nome:</Text>
-            <Text style={styles.recipesValue}>{recipe.name}</Text>
+            <View style={styles.recipes} key={recipe.id}>
+              <Text style={styles.recipesValue}>{recipe.id}</Text>
+              <Text style={styles.recipesProperty}>Nome:</Text>
+              <Text style={styles.recipesValue}>{recipe.name}</Text>
 
-            <Text style={styles.recipesProperty}>Horarios:</Text>
-            <Text style={styles.recipesValue}>{recipe.alarm}</Text>
+              <Text style={styles.recipesProperty}>Horarios:</Text>
+              <Text style={styles.recipesValue}>{recipe.alarm}</Text>
 
 
-            <TouchableOpacity style={styles.detailsButton}
-            // onPress={() => navigateToDetail(recipe)}
-            >
-              <Text style={styles.detailsButtonText}>Ver mais detalhes</Text>
-              <Feather name="arrow-right" size={16} color="#E02041" />
-            </TouchableOpacity>
-          </View>
-      ))}
+              <TouchableOpacity style={styles.detailsButton}
+              // onPress={() => navigateToDetail(recipe)}
+              >
+                <Text style={styles.detailsButtonText}>Ver mais detalhes</Text>
+                <Feather name="arrow-right" size={16} color="#E02041" />
+              </TouchableOpacity>
+            </View>
+          ))}
+        </View>
       </View>
-    </View>
 
-     
+
     </ScrollView>
   )
 }
