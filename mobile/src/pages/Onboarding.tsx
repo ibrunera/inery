@@ -21,7 +21,7 @@ export default function CustomOnboarding(){
         {
           title: 'Hey!',
           subtitle: 'Welcome to $App!',
-          backgroundColor: '#003c8f',
+          backgroundColor: '#DD3355',
           image: (
             <Feather
               name="plus"
@@ -33,7 +33,7 @@ export default function CustomOnboarding(){
         {
           title: 'Sempre atento(a)!',
           subtitle: 'Aqui você poderá criar alarmes para seus medicamentos!!',
-          backgroundColor: '#2867C3',
+          backgroundColor: '#FF9900',
           image: (
             <MaterialCommunityIcons name="alarm-light" size={200} color="white" />
           ),
@@ -41,7 +41,7 @@ export default function CustomOnboarding(){
         {
           title: 'Seus medicamentos já estarão cadastrados!!',
           subtitle: 'Será só criar um alarmes para eles.',
-          backgroundColor: '#3BDBE1',
+          backgroundColor: '#FFCC00',
           image: (
             <FontAwesome5 name="briefcase-medical" size={200} color="white" />
           ),
