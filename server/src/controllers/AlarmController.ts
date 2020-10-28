@@ -11,10 +11,12 @@ export default {
 
     const alarmRepository = getRepository(Alarm)
 
-    const alarms = alarmRepository.find({
+    const alarms = await alarmRepository.find({
       where : {recipe_id : Number(recipe_id)},
       relations: ['week_days']
     })
+
+    if(!alarms) return res.status(401)
 
     return res.json(alarms)
   },
@@ -54,14 +56,6 @@ export default {
 
     return res.json(alarm)
   },
-  //Acho q isso é no front
-  // async sendIoT(req: Request, res: Response){
-  //     const {week_days, hours} = req.params
-
-  //     convertMinutesToHours(Number(hours))
-
-
-  // }
 
   async update(req: Request, res: Response){
     const {id} = req.params
@@ -88,6 +82,6 @@ export default {
     if(!alarm) return res.status(401)
 
     await alarmRepository.delete(alarm)
-    return res.status(204)
+    return res.status(204).json({message : 'alarm deleted', alarm})
   }
 }

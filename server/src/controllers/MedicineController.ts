@@ -1,6 +1,7 @@
 import {Request, Response} from 'express'
 import {getRepository} from 'typeorm'
 import Medicine from '../models/Medicine'
+import medicineView from '../views/medicine.view'
 
 
 export default {
@@ -20,7 +21,6 @@ export default {
       photo : photo.filename
     }
 
-
     const medicine = medicineRepository.create(data)
 
     await medicineRepository.save(medicine)
@@ -33,17 +33,18 @@ export default {
 
     const medicineRepository = getRepository(Medicine)
 
-    const medicine = medicineRepository.findOneOrFail(id)
+    const medicine = await medicineRepository.findOneOrFail(id)
 
-    return res.json(medicine)
+    return res.json(medicineView.render(medicine))
+
   },
 
   async index(req: Request, res: Response){
     const medicineRepository = getRepository(Medicine)
 
-    const medicines = medicineRepository.find()
+    const medicines = await medicineRepository.find()
 
-    return res.json(medicines)
+    return res.json(medicineView.renderMany(medicines))
   },
 
   async update(req: Request, res: Response){
@@ -73,6 +74,6 @@ export default {
 
     await medicineRepository.delete(medicine)
 
-    return res.status(204)
+    return res.status(204).json({message : 'medicine deleted', medicine})
   }
 }

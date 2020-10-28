@@ -20,7 +20,7 @@ export default class Pacient {
   cpf: string;
 
   @Column()
-  photo: string;
+  photo?: string;
 
   @OneToMany(() => Recipe, (recipe) => recipe.pacient_id, {
     cascade: ['insert', 'update']

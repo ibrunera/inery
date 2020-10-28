@@ -31,6 +31,7 @@ export default {
     const recipe = recipeRepository.create(recipeData)
     await recipeRepository.save(recipe);
 
+
     const alarms = {
       recipe_id: recipe.id,
       hour: convertHourToMinutes(hour),
@@ -96,6 +97,6 @@ export default {
 
     await recipeRepository.delete(recipe)
 
-    return res.status(204)
+    return res.status(204).json({message: 'recipe deleted', recipe})
   }
 }

@@ -8,8 +8,9 @@ export default {
   async create(req : Request, res: Response) {
     const { name, email, password, cpf } = req.body
 
-    const photo = req.file as Express.Multer.File
-
+    const photo = req.file as Express.Multer.File 
+  
+      
     const pacientRepository = getRepository(Pacient)
 
   
@@ -18,14 +19,15 @@ export default {
       email,
       password,
       cpf, 
-      photo : photo.filename
+      photo : photo.filename  
     }
 
     const pacient = pacientRepository.create(data)
 
     await pacientRepository.save(pacient)
 
-    return res.status(201).json(pacient)
+    return res.status(201)
+    // .json(pacient)
   },
 
   async index(req: Request, res: Response){
@@ -72,7 +74,7 @@ export default {
 
     await pacientRepository.delete(pacient)
 
-    return res.status(204)
+    return res.status(204).json({message: 'pacient deleted', pacient})
   }
   
 }
