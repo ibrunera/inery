@@ -62,12 +62,26 @@
 .container .title-container img {
   width: 50px;
   height: 50px;
-  margin-top: 30px;
+  margin-top: 55px;
+  margin-right: 10px;
 }
 
 .container .title-container h1{
   margin-top: 80px;
   margin-bottom: 24px;
+}
+
+
+.container .add {
+  color : #2280FF;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom : 30px;
+}
+
+.container .add button:hover {
+  opacity: 2;
 }
 
 .container ul{
@@ -82,34 +96,64 @@
   background: #FFF;
   padding: 24px;
   border-radius:8px;
+
   position: relative;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-area: 'name info';
+  grid-gap: 10px;
+  list-style: none;
   
 }
 
-.container ul li img {
-  width: 40px;
-  height: 40px;
+.container ul li .name {
+  grid-area: 'name';
 }
 
-.container ul li button{
+.container ul li .info {
+  grid-area: 'info';
+}
+
+.container ul li img {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+
+}
+
+.container ul li .update{
+  position: absolute;
+  right: 54px;
+  top: 24px;
+  border:0;
+}
+
+.container ul li .delete{
   position: absolute;
   right: 24px;
   top: 24px;
   border:0;
 }
 
+.container ul li button + button{
+  justify-content : space-between;
+}
+
 .container ul li button:hover{
-  opacity: 0.8;
+  cursor: pointer;
+  opacity: 2;
 }
 
 .container ul li strong{
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   color: #41414d;
 }
 
 .container ul li p + strong{
-  margin-top: 32px;
+  margin-top: 16px;
 }
 
 .container ul li p{

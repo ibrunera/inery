@@ -5,6 +5,7 @@ import HomePage from './pages/admin/HomePage';
 import LoginPage from './pages/admin/LoginPage';
 import CreatePacient from './pages/CreatePacient';
 import LandingPage from './pages/LandingPage';
+import MedicineUpdate from './pages/admin/MedicineUpdate';
 
 
 export default function Routes() {
@@ -16,8 +17,8 @@ export default function Routes() {
         <Route path="/admin/" exact component={LoginPage} />
         <Route path="/admin/home" component={HomePage} />
         <Route path="/admin/medicine/create/" component={CreateMedicine} />
-
-        }
+        <Route path="/admin/medicine/update/:id" component={MedicineUpdate} />
+        
       </Switch>
     </BrowserRouter>
   )

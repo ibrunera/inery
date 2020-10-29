@@ -2,34 +2,49 @@ import React, { useEffect, useState } from 'react';
 
 import Sidebar from '../../components/SideBar'
 import listImg from '../../assets/medical-records.svg'
-import pillsImg from '../../assets/pills.svg'
+
+import { FiTrash } from 'react-icons/fi'
+import { HiPencilAlt } from 'react-icons/hi'
+import { FaPlusSquare } from 'react-icons/fa'
 
 import '../../styles/pages/admin/home.css'
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import api from '../../service/api';
 
 interface Medicine {
   id: number;
   name: string;
   manufacturer: string;
-  compund : string;
+  compund: string;
   description: string;
+  photo: string;
 }
 
 
 export default function HomePage() {
 
-  // const history = useHistory()
 
+  const history = useHistory()
   const [medicines, setMedicines] = useState<Medicine[]>([])
 
-  useEffect(() => { 
-    api.get('medicine').then(({data}) => setMedicines(data) )
+  useEffect(() => {
+    api.get('medicine').then(({ data }) => setMedicines(data))
   }, [])
+
+  async function handleDeleteMedicine(id: number) {
+    try {
+      await api.delete(`medicine/${id}`);
+
+      setMedicines(medicines.filter(medicine => medicine.id !== id));
+
+    } catch (error) {
+      alert('Erro ao deletar caso, tente novamente!')
+    }
+  }
 
   return (
     <div id="home-container">
-      <Sidebar />
+      <Sidebar icon='logout' />
       <div className="main-container">
 
         <main>
@@ -43,76 +58,65 @@ export default function HomePage() {
 
           <div className="container">
 
-            {/* <div className="list-page">
-              <img src={listImg} alt="Lista de remédios" />
-
-              <p>Lisa de remédios já cadastrados.</p>
-            </div>
-
-            <div className="create-page">
-              <img src={pillsImg} alt="Cadastrar remédios" />
-
-              <p>Cadastre remédios.</p>
-
-            </div> */}
             <div className="title-container">
               <img src={listImg} alt="Lista de remédios" />
-              <h1>Remédios Cadastrados</h1>
+              <h1>Medicamentos Cadastrados</h1>
+
 
             </div>
+        
+              <Link to='/admin/medicine/create' className="add" >
+                Adicione um medicamento
+                <FaPlusSquare size={30} color="#2280FF" />
+              </Link>
 
+         
             <ul>
-              <li>
-                <img src={listImg} alt="Lista de remédios" />
-                <strong>Remédio:</strong>
-                <p>Loratadina</p>
+              {medicines.map(medicine => (
+                <li key={medicine.id}>
 
-                <strong>Descrição:</strong>
-                <p>Remédio para alergia.</p>
-              </li>
+                  <div className="name">
+                    <img src={medicine.photo} alt={medicine.name} />
+
+                    <strong>Nome:</strong>
+                    <p>{medicine.name}</p>
+
+                  </div>
+
+                  <div className="info">
+                    <strong>Fabricante:</strong>
+                    <p>{medicine.manufacturer}</p>
+
+                    <strong>Descrição:</strong>
+                    <p>{medicine.description}</p>
+
+                    <strong>Composto:</strong>
+                    <p>{medicine.compund}</p>
+                  </div>
 
 
-              <li>
-                <img src={listImg} alt="Lista de remédios" />
-                <strong>Remédio:</strong>
-                <p>Loratadina</p>
+                  <button type="button" className="update"
+                    onClick={() => {
+                      history.push(`/admin/medicine/update/${medicine.id}`)
+                    }}
+                  >
+                    <HiPencilAlt size={24} color="#4C9C17" />
+                  </button>
 
-                <strong>Descrição:</strong>
-                <p>Remédio para alergia.</p>
-              </li>
+                  <button type="button" className="delete"
+                    onClick={() => handleDeleteMedicine(medicine.id)}
+                  >
+                    <FiTrash size={24} color="#E43335" />
+                  </button>
 
-              <li>
-                <img src={listImg} alt="Lista de remédios" />
-                <strong>Remédio:</strong>
-                <p>Loratadina</p>
-
-                <strong>Descrição:</strong>
-                <p>Remédio para alergia.</p>
-              </li>
-
-              <li>
-                <img src={listImg} alt="Lista de remédios" />
-                <strong>Remédio:</strong>
-                <p>Loratadina</p>
-
-                <strong>Descrição:</strong>
-                <p>Remédio para alergia.</p>
-              </li>
-
-              <li>
-                <img src={listImg} alt="Lista de remédios" />
-                <strong>Remédio:</strong>
-                <p>Loratadina</p>
-
-                <strong>Descrição:</strong>
-                <p>Remédio para alergia.</p>
-              </li>
+                </li>
+              ))}
             </ul>
 
           </div>
 
         </main>
       </div>
-    </div>
+    </div >
   )
 }

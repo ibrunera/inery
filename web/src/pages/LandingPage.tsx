@@ -14,7 +14,7 @@ export default function LandingPage() {
 
         <main>
           <h1>Não esqueça de tomar seus remédios!</h1>
-          <p>Tenha os horários na pal,a as suas mãos.</p>
+          <p>Tenha os horários na palma as suas mãos.</p>
         </main>
         <Link to='/pacient/create' className="enter-app">
           <FiArrowRight size={30} color='#fff' />

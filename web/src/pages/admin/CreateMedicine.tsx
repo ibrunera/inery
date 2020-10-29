@@ -52,6 +52,7 @@ export default function CreateMedicine() {
 
 
   return (
+
     <div id="create-medicine-container">
       <Sidebar />
 
