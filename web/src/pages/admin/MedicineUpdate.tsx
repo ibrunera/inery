@@ -57,7 +57,7 @@ export default function MedicineUpdate() {
 
   return (
 
-    <div id="create-medicine-container">
+    <div id="update-medicine-container">
       <Sidebar />
 
 
