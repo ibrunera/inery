@@ -1,7 +1,7 @@
 import {Request, Response} from 'express'
 import {getRepository} from 'typeorm'
-import Pacient from '../models/Pacient'
-import pacientView from '../views/pacient.view'
+import Patient from '../models/Patient'
+import patientView from '../views/patient.view'
 
 
 export default {
@@ -11,7 +11,7 @@ export default {
     const photo = req.file as Express.Multer.File 
   
       
-    const pacientRepository = getRepository(Pacient)
+    const patientRepository = getRepository(Patient)
 
   
     const data = {
@@ -22,59 +22,58 @@ export default {
       photo : photo.filename  
     }
 
-    const pacient = pacientRepository.create(data)
+    const patient = patientRepository.create(data)
 
-    await pacientRepository.save(pacient)
+    await patientRepository.save(patient)
 
-    return res.status(201)
-    // .json(pacient)
+    return res.status(201).json(patient)
   },
 
   async index(req: Request, res: Response){
-    const pacientRepository = getRepository(Pacient)
+    const patientRepository = getRepository(Patient)
 
-    const pacient = await pacientRepository.find()
+    const patient = await patientRepository.find()
 
-    return res.json(pacientView.renderMany(pacient))
+    return res.json(patientView.renderMany(patient))
   },
   
   async show(req: Request, res: Response){
     const id = req.params
     
-    const pacientRepository = getRepository(Pacient)
+    const patientRepository = getRepository(Patient)
     
-    const pacient = await pacientRepository.findOneOrFail(id)
+    const patient = await patientRepository.findOneOrFail(id)
     
-    return res.json(pacientView.render(pacient))
+    return res.json(patientView.render(patient))
   },
 
   async update(req: Request, res: Response){
     const {id} = req.params
 
-    const pacientRepository = getRepository(Pacient)
+    const patientRepository = getRepository(Patient)
 
-    const pacient = await pacientRepository.findOneOrFail(id)
+    const patient = await patientRepository.findOneOrFail(id)
 
 
-    if(!pacient) return res.status(401)
+    if(!patient) return res.status(401)
 
-    pacientRepository.merge(pacient, req.body)
-    const results = await pacientRepository.save(pacient)
+    patientRepository.merge(patient, req.body)
+    const results = await patientRepository.save(patient)
     return res.json(results)
   },
 
   async delete(req: Request, res: Response){
     const {id} = req.params
 
-    const pacientRepository = getRepository(Pacient)
+    const patientRepository = getRepository(Patient)
 
-    const pacient = await pacientRepository.findOneOrFail(id)
+    const patient = await patientRepository.findOneOrFail(id)
 
-    if(!pacient) return res.status(401)
+    if(!patient) return res.status(401)
 
-    await pacientRepository.delete(pacient)
+    await patientRepository.delete(patient)
 
-    return res.status(204).json({message: 'pacient deleted', pacient})
+    return res.status(204).json({message: 'pacient deleted', patient})
   }
   
 }

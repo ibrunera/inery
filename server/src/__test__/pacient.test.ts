@@ -15,21 +15,21 @@ describe('Testing pacient routes', () => {
 
 
   //   it('Should register', async (done) => {
-  //     const pacient = {
+  //     const patient = {
   //       name: 'Thais Gennari',
   //       email: 'thaisgenn@gmail.com',
   //       cpf: '50808582888',
   //       password: 'thais',
   //       photo: fs.readFileSync('/home/tgf0911/www/faculdade/inery/server/src/__test__/assets/p1.png')
   //     }
-  //     console.log(pacient)
-  //     const response = await api.post('pacient', pacient)
+  //     console.log(patient)
+  //     const response = await api.post('patient', patient)
   //     expect(response.status).to.equal(201)
   //     done()
   //   })
 
   it('should list all', async (done) => {
-    const { data } = await api.get('/pacient/');
+    const { data } = await api.get('/patient/');
     const patient: Patient[] = data;
     expect(patient).to.be.an('Array')
      done()
@@ -37,17 +37,17 @@ describe('Testing pacient routes', () => {
 
 
   it('should list single patient', async () => {
-    const { data } = await api.get('/pacient/2');
+    const { data } = await api.get('/patient/2');
     const patient: Patient = data;
     expect(patient).to.be.an('object').to.have.property('id').to.equal(2);
   })
 
 
   it('Should update a patient', async () => {
-    const { data: getData } = await api.get('/pacient/2');
+    const { data: getData } = await api.get('/patient/2');
     const patient: Patient = getData;
     patient.password += 'novasenha';
-    const { data } = await api.put('/pacient/2', {
+    const { data } = await api.put('/patient/2', {
       ...patient,
     });
     expect(data)
@@ -55,7 +55,7 @@ describe('Testing pacient routes', () => {
   })
 
   it('Should Delete a Patient', async (done) => {
-    const { data } = await api.delete('/pacient/5');
+    const { data } = await api.delete('/patient/5');
 
     expect(data)
       .to.be.an('object')

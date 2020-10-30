@@ -9,7 +9,7 @@ export default {
   async create(req: Request, res: Response) {
     const { description, medicine_id, hour } = req.body
 
-    const pacient_id = Number(req.headers.authorization)
+    const patient_id = Number(req.headers.authorization)
 
     const recipeRepository = getRepository(Recipe)
 
@@ -24,7 +24,7 @@ export default {
 
     
     const recipeData = {
-      pacient_id,
+      patient_id,
       medicine_id,
       description,
     }
@@ -50,11 +50,11 @@ export default {
   },
 
   async index(req: Request, res: Response) {
-    const  pacient_id = req.headers.authorization
+    const  patient_id = req.headers.authorization
     const recipeRepository = getRepository(Recipe)
 
     const recipes = await recipeRepository.find({
-      where: { pacient_id : Number(pacient_id)},
+      where: { patient_id : Number(patient_id)},
       relations: ['alarms']
     })
 

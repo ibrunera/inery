@@ -19,7 +19,7 @@ export class createRecipe1603569848326 implements MigrationInterface {
                     type: 'text'
                 },
                 {
-                    name: 'pacient_id',
+                    name: 'patient_id',
                     type: 'integer'
                 },
                 {
@@ -30,9 +30,9 @@ export class createRecipe1603569848326 implements MigrationInterface {
             ],
             foreignKeys: [
                 {
-                    name: 'RecipePacient',
-                    columnNames: ['pacient_id'],
-                    referencedTableName: 'pacient',
+                    name: 'RecipePatient',
+                    columnNames: ['patient_id'],
+                    referencedTableName: 'patient',
                     referencedColumnNames: ['id'],
                     onUpdate: 'CASCADE',
                     onDelete: 'CASCADE',

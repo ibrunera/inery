@@ -2,8 +2,8 @@ import {Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn, BeforeIns
 import Recipe from './Recipe'
 import bcrypt from 'bcryptjs'
 
-@Entity('pacient')
-export default class Pacient {
+@Entity('patient')
+export default class Patient {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -22,10 +22,10 @@ export default class Pacient {
   @Column()
   photo?: string;
 
-  @OneToMany(() => Recipe, (recipe) => recipe.pacient_id, {
+  @OneToMany(() => Recipe, (recipe) => recipe.patient_id, {
     cascade: ['insert', 'update']
   })
-  @JoinColumn({name : 'pacient_id'})
+  @JoinColumn({name : 'patient_id'})
   recipes: Recipe[];
 
   @BeforeInsert()

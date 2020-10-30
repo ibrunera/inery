@@ -1,7 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinColumn} from 'typeorm'
 import Alarm from './Alarm';
 import Medicine from './Medicine';
-import Pacient from './Pacient';
+import Patient from './Patient';
 
 @Entity('recipe')
 export default class Recipe {
@@ -12,9 +12,9 @@ export default class Recipe {
   @Column()
   description: string
 
-  @ManyToOne(() => Pacient, (pacient) => pacient.recipes)
-  @JoinColumn({name : 'pacient_id'})
-  pacient_id: number;
+  @ManyToOne(() => Patient, (patient) => patient.recipes)
+  @JoinColumn({name : 'patient_id'})
+  patient_id: number;
   
   @ManyToOne(() => Medicine, (medicine) => medicine.recipes)
   @JoinColumn({name : 'medicine_id'})

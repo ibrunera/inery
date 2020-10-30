@@ -7,18 +7,18 @@ import uploadConfig from './config/uploads'
 import AlarmController from './controllers/AlarmController'
 import AuthController from './controllers/AuthController'
 import MedicineController from './controllers/MedicineController'
-import PacientController from './controllers/PatientController'
+import PatientController from './controllers/PatientController'
 import RecipeController from './controllers/RecipeController'
 import IoTController from './controllers/IoTController'
 
 const routes = Router()
 const uploads = multer(uploadConfig)
 
-routes.post('/pacient', uploads.single('photo'),PacientController.create)
-routes.get('/pacient', PacientController.index)
-routes.get('/pacient/:id', PacientController.show)
-routes.put('/pacient/:id', uploads.single('photo'), PacientController.update)
-routes.delete('/pacient/:id', PacientController.delete)
+routes.post('/patient', uploads.single('photo'),PatientController.create)
+routes.get('/patient', PatientController.index)
+routes.get('/patient/:id', PatientController.show)
+routes.put('/patient/:id', uploads.single('photo'), PatientController.update)
+routes.delete('/patient/:id', PatientController.delete)
 
 routes.post('/medicine', uploads.single('photo'),MedicineController.create)
 routes.get('/medicine', MedicineController.index)
