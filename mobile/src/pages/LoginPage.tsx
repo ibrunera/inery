@@ -7,6 +7,8 @@ export default function LoginPage() {
 
   const navigation = useNavigation()
 
+  
+
   return (
     <View style={styles.container}>
       <View>
